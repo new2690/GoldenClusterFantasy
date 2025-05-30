@@ -1,446 +1,964 @@
 # GoldenClusterFantasy
 مستندات جامع پروژه نان فانتزی خوشه طلایی (فروش انواع نان فانتزی و شیرینی)
-این مستند، شرح کاملی از پروژه GoldenClusterFantasy، یک پلتفرم فروش آنلاین نان فانتزی، شیرینی و محصولات متنوع (با قابلیت گسترش برای محصولاتی مثل حلیم) ارائه می‌دهد. هدف، ایجاد سیستمی انعطاف‌پذیر، مقیاس‌پذیر و با عملکرد بالا برای مدیریت فروشگاه آنلاین است که از Clean Architecture، اصول SOLID و فناوری‌های مدرن استفاده می‌کند. این مستند تمام لایه‌ها، قابلیت‌ها، ساختارها، فناوری‌ها و جزئیات پیاده‌سازی را به‌صورت منظم و با توضیحات دو زبانه (فارسی و انگلیسی) پوشش می‌دهد.
-فهرست مطالب
-مقدمه (#مقدمه)
+مستندات کامل پروژه GoldenClusterFantasy
+پروژه GoldenClusterFantasy یک سیستم بک‌اند پیشرفته برای یک فروشگاه آنلاین فروش نان فانتزی، شیرینی، و محصولات متنوع (مثل حلیم) است که با استفاده از Clean Architecture، .NET 9.0.5، و تکنولوژی‌های مدرن طراحی شده است. این پروژه با هدف ارائه یک پلتفرم مقیاس‌پذیر، انعطاف‌پذیر، و قابل نگهداری توسعه یافته و شامل قابلیت‌های پیشرفته‌ای مثل سرچ پیشرفته با ویژگی‌های پویا، چت بلادرنگ، مدیریت موجودی، پرداخت آنلاین، اعلانات (ایمیل و پیامک)، و تست‌های واحد است. این مستندات تمام لایه‌ها، کلاس‌ها، قابلیت‌ها، تکنولوژی‌ها، و ساختارهای پروژه را به‌صورت کامل، منظم، و با جزئیات شرح می‌دهد.
+1. نمای کلی پروژه
+1.1 هدف پروژه
+هدف پروژه، ایجاد یک پلتفرم فروش آنلاین با تمرکز بر نان فانتزی و شیرینی است که:
+امکان جستجوی پیشرفته با فیلترهای ترکیبی (برند، قیمت، فروشنده، ویژگی‌های پویا مثل وزن یا تعداد کاسه) را فراهم می‌کند.
 
-معماری پروژه (#معماری-پروژه)
-لایه Domain (#لایه-domain)
+از محصولات متنوع (مثل حلیم با ویژگی‌های خاص) پشتیبانی می‌کند.
 
-لایه Application (#لایه-application)
+قابلیت‌هایی مثل احراز هویت، چت بلادرنگ، مدیریت سفارشات، پرداخت، و اعلانات را ارائه می‌دهد.
 
-لایه Infrastructure (#لایه-infrastructure)
+برای گسترش در آینده (اضافه کردن محصولات جدید یا ویژگی‌ها) آماده است.
 
-لایه Presentation (#لایه-presentation)
+1.2 معماری پروژه
+پروژه از Clean Architecture استفاده می‌کند که شامل چهار لایه اصلی است:
+Domain: شامل موجودیت‌ها و منطق اصلی کسب‌وکار.
 
-لایه Tests (#لایه-tests)
+Application: شامل منطق برنامه، سرویس‌ها، و DTOها.
 
-قابلیت‌ها و امکانات (#قابلیت‌ها-و-امکانات)
-مدیریت کاربران (#مدیریت-کاربران)
+Infrastructure: شامل پیاده‌سازی‌های زیرساختی مثل دیتابیس، کش، و سرویس‌های خارجی.
 
-مدیریت محصولات (#مدیریت-محصولات)
+Presentation: شامل APIها، SignalR Hub، و میدلورها.
 
-مدیریت سفارشات (#مدیریت-سفارشات)
+1.3 تکنولوژی‌ها
+تکنولوژی
 
-پرداخت آنلاین (#پرداخت-آنلاین)
+نسخه
 
-اعلانات (#اعلانات)
+توضیحات
 
-اشتراک‌ها (#اشتراک‌ها)
+.NET
 
-برنامه وفاداری (#برنامه-وفاداری)
+9.0.5
 
-چت بلادرنگ (#چت-بلادرنگ)
+فریم‌ورک اصلی برای توسعه بک‌اند
 
-تحلیل و گزارش‌گیری (#تحلیل-و-گزارش‌گیری)
+Entity Framework Core
 
-مدیریت موجودی (#مدیریت-موجودی)
+9.0.0
 
-نظرات کاربران (#نظرات-کاربران)
+برای دسترسی به دیتابیس SQL Server
 
-جستجوی پیشرفته (#جستجوی-پیشرفته)
+AutoMapper
 
-فناوری‌ها و ابزارها (#فناوری‌ها-و-ابزارها)
+13.0.1
 
-ساختار پروژه (#ساختار-پروژه)
+برای نگاشت موجودیت‌ها به DTOها
 
-نصب و راه‌اندازی (#نصب-و-راه‌اندازی)
+StackExchange.Redis
 
-دیپلوی و مقیاس‌پذیری (#دیپلوی-و-مقیاس‌پذیری)
+2.8.16
 
-تست‌ها (#تست‌ها)
+برای کش با Redis
 
-گسترش‌پذیری و نگهداری (#گسترش‌پذیری-و-نگهداری)
+RabbitMQ.Client
 
-نتیجه‌گیری (#نتیجه‌گیری)
+6.8.1
 
-مقدمه
-GoldenClusterFantasy یک پلتفرم فروش آنلاین است که برای عرضه نان فانتزی، شیرینی و محصولات متنوع (مثل حلیم) طراحی شده. این سیستم قابلیت‌هایی مثل جستجوی پیشرفته، چت بلادرنگ، مدیریت موجودی، پرداخت آنلاین و اعلانات را ارائه می‌دهد. هدف اصلی، ایجاد تجربه کاربری روان، عملکرد بالا و انعطاف‌پذیری برای اضافه کردن محصولات جدید با ویژگی‌های متفاوت (مثل وزن یا تعداد کاسه برای حلیم) است.
-ویژگی‌های کلیدی:
-معماری تمیز (Clean Architecture) برای جداسازی مسئولیت‌ها.
+برای صف پیام
 
-جستجوی پیشرفته با فیلترهای پویا (مثل برند، قیمت، ویژگی‌های محصول).
+Kavenegar.Core
 
-پشتیبانی از ویژگی‌های پویا برای محصولات (Dynamic Attributes).
+1.2.5
 
-استفاده از فناوری‌های مدرن مثل SignalR، Redis و RabbitMQ.
+برای ارسال پیامک
 
-مستندات دو زبانه (فارسی و انگلیسی) برای توسعه‌دهندگان.
+Microsoft.AspNetCore.SignalR
 
-مخاطبان این مستند:
-توسعه‌دهندگان برای درک ساختار و گسترش پروژه.
+1.1.0
 
-مدیران فنی برای ارزیابی فناوری‌ها و قابلیت‌ها.
+برای چت بلادرنگ
 
-تیم‌های عملیاتی برای نصب، دیپلوی و نگهداری.
+Swashbuckle.AspNetCore
 
-معماری پروژه
-پروژه از معماری Clean Architecture استفاده می‌کند که شامل لایه‌های زیر است:
-لایه Domain
-لایه Domain هسته مرکزی پروژه است و شامل موجودیت‌ها (Entities) و منطق اصلی کسب‌وکار (Business Logic) می‌شود. این لایه مستقل از سایر لایه‌ها بوده و هیچ وابستگی خارجی ندارد.
-ویژگی‌ها:
-موجودیت‌ها: تعریف مدل‌های اصلی مثل User، Product، Order و غیره.
+6.9.0
 
-Enumها: برای مقادیر ثابت مثل OrderStatus یا PaymentStatus.
+برای مستندسازی API با Swagger
 
-انعطاف‌پذیری: پشتیبانی از ویژگی‌های پویا (Attributes) برای محصولات متنوع.
+xUnit
 
-فایل‌های کلیدی:
-Domain/Entities/User.cs: مدل کاربر با ویژگی‌هایی مثل Email، PasswordHash و Role.
+2.9.2
 
-Domain/Entities/Product.cs: مدل محصول با پشتیبانی از Brand، Tags و AttributeValues.
+برای تست‌های واحد
 
-Domain/Entities/Attribute.cs: مدل ویژگی‌های پویا (مثل وزن یا تعداد کاسه).
+Moq
 
-Domain/Entities/ProductAttributeValue.cs: مقادیر ویژگی‌ها برای هر محصول.
+4.20.70
 
-Domain/Enums/OrderStatus.cs: وضعیت‌های سفارش (مثل Pending، Completed).
+برای شبیه‌سازی در تست‌ها
 
-مثال کد:
-csharp
+Microsoft.IdentityModel.Tokens
 
-namespace Domain.Entities;
+8.1.2
 
-/// <summary>
-/// Represents a product in the system.
-/// نشان‌دهنده یک محصول در سیستم.
-/// </summary>
-public class Product
-{
-    public int ProductId { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public decimal Price { get; set; }
-    public string? Brand { get; set; }
-    public List<ProductAttributeValue> AttributeValues { get; set; } = new List<ProductAttributeValue>();
-}
+برای احراز هویت JWT
 
-لایه Application
-لایه Application منطق برنامه‌نویسی را پیاده‌سازی می‌کند و رابط بین لایه‌های Presentation و Domain است. شامل سرویس‌ها، DTOها و نگاشت‌ها (Mappings) است.
-ویژگی‌ها:
-DTOs: برای انتقال داده‌ها بین لایه‌ها (مثل ProductDto، SearchQueryDto).
+BCrypt.Net-Next
 
-Interfaces: تعریف رابط‌ها برای سرویس‌ها (مثل ISearchService).
+4.0.3
 
-Services: پیاده‌سازی منطق کسب‌وکار (مثل SearchService).
+برای هش کردن رمز عبور
 
-AutoMapper: برای نگاشت موجودیت‌ها به DTOها.
-
-فایل‌های کلیدی:
-Application/DTOs/SearchQueryDto.cs: DTO برای جستجوی پیشرفته با فیلترهای پویا.
-
-Application/Interfaces/ISearchService.cs: رابط سرویس جستجو.
-
-Application/Services/SearchService.cs: پیاده‌سازی جستجوی پیشرفته.
-
-Application/Mappings/MappingProfile.cs: نگاشت‌های AutoMapper.
-
-مثال کد:
-csharp
-
-namespace Application.Services;
-
-/// <summary>
-/// Service for advanced search operations.
-/// سرویس برای عملیات جستجوی پیشرفته.
-/// </summary>
-public class SearchService : ISearchService
-{
-    private readonly AppDbContext _context;
-    private readonly IMapper _mapper;
-    public SearchService(AppDbContext context, IMapper mapper)
-    {
-        _context = context;
-        _mapper = mapper;
-    }
-
-    public async Task<SearchResultDto> SearchAsync(SearchQueryDto query, int? userId)
-    {
-        // Dynamic query building with LINQ
-        // ساخت پرس‌وجوی پویا با LINQ
-        var dbQuery = _context.Products.AsQueryable();
-        // اعمال فیلترها و جستجو
-    }
-}
-
-لایه Infrastructure
-لایه Infrastructure خدمات زیرساختی مثل دسترسی به دیتابیس، کش، صف پیام و ارسال ایمیل/پیامک را فراهم می‌کند.
-ویژگی‌ها:
-دیتابیس: استفاده از Entity Framework Core با SQL Server.
-
-کش: استفاده از Redis برای کش نتایج جستجو.
-
-صف پیام: استفاده از RabbitMQ برای اعلانات غیرهمزمان.
-
-ارسال ایمیل: استفاده از SMTP (مثل Gmail).
-
-ارسال پیامک: استفاده از API کاوه‌نگار.
-
-فایل‌های کلیدی:
-Infrastructure/Persistence/AppDbContext.cs: زمینه دیتابیس EF Core.
-
-Infrastructure/Caching/RedisCacheService.cs: سرویس کش Redis.
-
-Infrastructure/Messaging/RabbitMQService.cs: سرویس صف RabbitMQ.
-
-Infrastructure/Persistence/DatabaseSchema.sql: اسکریپت‌های دیتابیس.
-
-مثال کد:
-csharp
-
-namespace Infrastructure.Persistence;
-
-/// <summary>
-/// Database context for the application.
-/// زمینه دیتابیس برای برنامه.
-/// </summary>
-public class AppDbContext : DbContext
-{
-    public DbSet<Product> Products { get; set; }
-    public DbSet<Attribute> Attributes { get; set; }
-    // سایر DbSetها
-}
-
-لایه Presentation
-لایه Presentation رابط کاربری API و ارتباطات بلادرنگ را مدیریت می‌کند.
-ویژگی‌ها:
-کنترلرها: APIهای RESTful با ASP.NET Core.
-
-SignalR Hub: برای چت بلادرنگ.
-
-میان‌افزارها: مدیریت خطا و محدودیت نرخ درخواست.
-
-Swagger: مستندسازی API.
-
-فایل‌های کلیدی:
-Presentation/Controllers/SearchController.cs: کنترلر جستجوی پیشرفته.
-
-Presentation/Hubs/ChatHub.cs: هاب SignalR برای چت.
-
-Presentation/Middlewares/ErrorHandlingMiddleware.cs: مدیریت خطاهای سراسری.
-
-Presentation/Program.cs: پیکربندی برنامه.
-
-مثال کد:
-csharp
-
-namespace Presentation.Controllers;
-
-/// <summary>
-/// Controller for advanced search operations.
-/// کنترلر برای عملیات جستجوی پیشرفته.
-/// </summary>
-[Route("api/[controller]")]
-[ApiController]
-public class SearchController : ControllerBase
-{
-    private readonly ISearchService _searchService;
-
-    public SearchController(ISearchService searchService)
-    {
-        _searchService = searchService;
-    }
-
-    [HttpPost]
-    public async Task<IActionResult> Search([FromBody] SearchQueryDto query)
-    {
-        var result = await _searchService.SearchAsync(query, null);
-        return Ok(result);
-    }
-}
-
-لایه Tests
-لایه Tests شامل تست‌های واحد برای اطمینان از صحت عملکرد سرویس‌ها است.
-ویژگی‌ها:
-تست‌های واحد: با استفاده از xUnit و Moq.
-
-دیتابیس در حافظه: برای تست‌های مستقل با EF Core In-Memory.
-
-فایل‌های کلیدی:
-tests/Application.Tests/SearchServiceTests.cs: تست‌های سرویس جستجو.
-
-tests/Application.Tests/UserServiceTests.cs: تست‌های سرویس کاربر.
-
-مثال کد:
-csharp
-
-namespace Application.Tests;
-
-public class SearchServiceTests
-{
-    [Fact]
-    public async Task SearchAsync_WithAttributeFilters_ReturnsFilteredProducts()
-    {
-        // Arrange, Act, Assert
-    }
-}
-
-قابلیت‌ها و امکانات
-مدیریت کاربران
-ثبت‌نام و ورود: کاربران می‌تونن با ایمیل و رمز عبور ثبت‌نام و وارد سیستم بشن (با JWT).
-
-نقش‌ها: پشتیبانی از نقش‌های Customer، Vendor، Admin و SuperAdmin.
-
-مدیریت پروفایل: ویرایش اطلاعات کاربر (نام، ایمیل، و غیره).
-
-فناوری‌ها: JWT، BCrypt برای هش رمز عبور.
-مدیریت محصولات
-ایجاد و ویرایش محصول: اضافه کردن محصولات با ویژگی‌های پویا (مثل وزن برای حلیم).
-
-ویژگی‌های پویا: پشتیبانی از ویژگی‌هایی مثل وزن، تعداد کاسه، طعم و غیره.
-
-مدیریت برند و تگ‌ها: فیلتر محصولات بر اساس برند و تگ.
-
-فناوری‌ها: EF Core، SQL Server.
-مدیریت سفارشات
-ایجاد سفارش: کاربران می‌تونن محصولات رو به سبد خرید اضافه و سفارش ثبت کنن.
-
-پیگیری سفارش: نمایش وضعیت سفارش (Pending، Shipped، Delivered).
-
-مدیریت موجودی: کاهش خودکار موجودی پس از ثبت سفارش.
-
-فناوری‌ها: EF Core، RabbitMQ برای اعلانات.
-پرداخت آنلاین
-پردازش پرداخت: ادغام با درگاه‌های پرداخت (مثل زرین‌پال، در این پروژه شبیه‌سازی شده).
-
-پیگیری تراکنش: ذخیره تاریخچه تراکنش‌ها.
-
-فناوری‌ها: EF Core.
-اعلانات
-ایمیل و پیامک: ارسال اعلانات برای تأیید سفارش، پرداخت و غیره.
-
-غیرهمزمان: استفاده از RabbitMQ برای پردازش اعلانات.
-
-فناوری‌ها: SMTP، کاوه‌نگار، RabbitMQ.
-اشتراک‌ها
-اشتراک ماهیانه: کاربران می‌تونن برای دریافت محصولات به‌صورت دوره‌ای اشتراک کنن.
-
-مدیریت اشتراک: فعال‌سازی، لغو و تمدید اشتراک.
-
-فناوری‌ها: EF Core.
-برنامه وفاداری
-امتیازات وفاداری: کاربران با خرید امتیاز جمع می‌کنن.
-
-استفاده از امتیازات: تخفیف با استفاده از امتیازات.
-
-فناوری‌ها: EF Core.
-چت بلادرنگ
-چت با فروشندگان: کاربران می‌تونن با فروشندگان چت کنن.
-
-چت گروهی: پشتیبانی از گروه‌های چت.
-
-فناوری‌ها: SignalR.
-تحلیل و گزارش‌گیری
-گزارش‌های تحلیلی: گزارش فروش، موجودی و رفتار کاربران.
-
-دسترسی محدود: فقط برای Admins و SuperAdmins.
-
-فناوری‌ها: EF Core.
-مدیریت موجودی
-پیگیری موجودی: هشدار برای موجودی کم.
-
-به‌روزرسانی خودکار: کاهش موجودی پس از سفارش.
-
-فناوری‌ها: EF Core.
-نظرات کاربران
-ثبت نظر: کاربران می‌تونن برای محصولات نظر ثبت کنن.
-
-نمایش نظرات: نمایش نظرات تأییدشده.
-
-فناوری‌ها: EF Core.
-جستجوی پیشرفته
-فیلترهای ترکیبی: جستجو بر اساس نام، برند، فروشنده، قیمت، تاریخ، تگ‌ها و ویژگی‌های پویا.
-
-ویژگی‌های پویا: پشتیبانی از فیلترهایی مثل وزن (500 گرم) یا تعداد کاسه (2).
-
-صفحه‌بندی و مرتب‌سازی: نتایج با صفحه‌بندی و مرتب‌سازی (قیمت، نام، تاریخ).
-
-کش: نتایج در Redis برای 5 دقیقه کش می‌شن.
-
-تاریخچه جستجو: ذخیره جستجوهای کاربران برای تحلیل.
-
-فناوری‌ها: EF Core، Redis، LINQ.
-مثال درخواست جستجو:
-json
-
-{
-  "Keyword": "Halim",
-  "Brand": "Soroush",
-  "AttributeFilters": {
-    "1": "500", // Weight=500g
-    "2": "2"    // BowlCount=2
-  },
-  "MinPrice": 40000,
-  "PageNumber": 1,
-  "PageSize": 10
-}
-
-فناوری‌ها و ابزارها
-زبان برنامه‌نویسی: C# (.NET 9.0.5).
-
-فریم‌ورک: ASP.NET Core برای API و SignalR.
-
-دیتابیس: SQL Server با EF Core.
-
-کش: Redis (StackExchange.Redis).
-
-صف پیام: RabbitMQ.
-
-ارسال ایمیل: SMTP (مثال با Gmail).
-
-ارسال پیامک: کاوه‌نگار.
-
-مستندسازی API: Swagger (Swashbuckle).
-
-تست: xUnit، Moq، EF Core In-Memory.
-
-نگاشت: AutoMapper.
-
-احراز هویت: JWT (Microsoft.IdentityModel.Tokens).
-
-ابزارهای توسعه: Visual Studio 2022، VS Code.
-
-مدیریت پروژه: Git، GitHub.
-
-ساختار پروژه
+1.4 ساختار پروژه
 
 GoldenClusterFantasy/
 ├── src/
 │   ├── Domain/
-│   │   ├── Entities/
-│   │   ├── Enums/
-│   │   ├── Domain.csproj
+│   │   └── Domain.csproj
 │   ├── Application/
-│   │   ├── DTOs/
-│   │   ├── Interfaces/
-│   │   ├── Mappings/
-│   │   ├── Services/
-│   │   ├── Application.csproj
+│   │   └── Application.csproj
 │   ├── Infrastructure/
-│   │   ├── Persistence/
-│   │   ├── Caching/
-│   │   ├── Messaging/
-│   │   ├── Infrastructure.csproj
+│   │   └── Infrastructure.csproj
 │   ├── Presentation/
-│   │   ├── Controllers/
-│   │   ├── Hubs/
-│   │   ├── Middlewares/
-│   │   ├── Program.cs
-│   │   ├── appsettings.json
-│   │   ├── Presentation.csproj
+│   │   └── Presentation.csproj
 ├── tests/
 │   ├── Application.Tests/
-│   │   ├── Application.Tests.csproj
+│   │   └── Application.Tests.csproj
 ├── GoldenClusterFantasy.sln
 
-توضیحات:
-src: شامل پروژه‌های اصلی.
+2. لایه‌ها و جزئیات
+2.1 لایه Domain
+لایه Domain هسته پروژه است و شامل موجودیت‌ها و منطق کسب‌وکار است. این لایه هیچ وابستگی به سایر لایه‌ها ندارد.
+2.1.1 کلاس‌ها و توضیحات
+کلاس
 
-tests: شامل پروژه تست‌ها.
+توضیحات
 
-sln: فایل سولوشن برای مدیریت پروژه‌ها.
+User
 
-نصب و راه‌اندازی
-پیش‌نیازها
+نشان‌دهنده کاربر سیستم (مشتری، فروشنده، مدیر). شامل ویژگی‌هایی مثل 
+UserId
+، 
+Email
+، 
+PasswordHash
+، 
+Role
+ (Customer, Vendor, Admin, SuperAdmin).
+
+Product
+
+نشان‌دهنده محصول (مثل نان، شیرینی، حلیم). شامل 
+ProductId
+، 
+Name
+، 
+Price
+، 
+VendorId
+، 
+Brand
+، 
+Tags
+، و 
+AttributeValues
+ برای ویژگی‌های پویا (مثل وزن).
+
+Vendor
+
+نشان‌دهنده فروشنده. شامل 
+VendorId
+، 
+VendorName
+، و ارتباط با محصولات.
+
+Order
+
+نشان‌دهنده سفارش. شامل 
+OrderId
+، 
+UserId
+، 
+TotalPrice
+، و لیست 
+OrderItems
+.
+
+OrderItem
+
+آیتم‌های سفارش. شامل 
+OrderItemId
+، 
+ProductId
+، 
+Quantity
+، و 
+UnitPrice
+.
+
+Payment
+
+پرداخت. شامل 
+PaymentId
+، 
+OrderId
+، 
+Amount
+، و 
+Status
+ (Pending, Completed, Failed).
+
+Notification
+
+اعلان (ایمیل یا پیامک). شامل 
+NotificationId
+، 
+UserId
+، 
+Message
+، و 
+Type
+ (Email, SMS).
+
+Subscription
+
+اشتراک کاربر. شامل 
+SubscriptionId
+، 
+UserId
+، و 
+EndDate
+.
+
+LoyaltyPoint
+
+امتیاز وفاداری کاربر. شامل 
+LoyaltyPointId
+، 
+UserId
+، و 
+Points
+.
+
+LoyaltyTransaction
+
+تراکنش امتیاز وفاداری. شامل 
+LoyaltyTransactionId
+، 
+LoyaltyPointId
+، و 
+Amount
+.
+
+ChatMessage
+
+پیام چت بلادرنگ. شامل 
+ChatMessageId
+، 
+SenderId
+، 
+ReceiverId
+، و 
+Content
+.
+
+UserActivity
+
+فعالیت کاربر (مثل ورود یا خرید). شامل 
+UserActivityId
+، 
+UserId
+، و 
+ActivityType
+.
+
+Inventory
+
+موجودی محصول. شامل 
+ProductId
+، 
+Quantity
+، و 
+MinStockThreshold
+.
+
+InventoryAlert
+
+هشدار کمبود موجودی. شامل 
+InventoryAlertId
+، 
+ProductId
+، و 
+AlertDate
+.
+
+Review
+
+نظر کاربر درباره محصول. شامل 
+ReviewId
+، 
+ProductId
+، 
+UserId
+، و 
+Rating
+.
+
+SearchHistory
+
+تاریخچه جستجوی کاربر. شامل 
+SearchId
+، 
+UserId
+، 
+Query
+، و 
+CreatedAt
+.
+
+Attribute
+
+ویژگی پویا (مثل وزن). شامل 
+AttributeId
+، 
+Name
+، 
+DataType
+ (Decimal, Integer, String)، و 
+IsFilterable
+.
+
+ProductAttributeValue
+
+مقدار ویژگی برای محصول (مثل "500" برای وزن). شامل 
+ProductAttributeValueId
+، 
+ProductId
+، 
+AttributeId
+، و 
+Value
+.
+
+2.1.2 ساختار فایل‌ها
+src/Domain/Entities/: شامل تمام کلاس‌های موجودیت.
+
+src/Domain/Domain.csproj: فایل پروژه بدون وابستگی خارجی.
+
+2.2 لایه Application
+لایه Application شامل منطق برنامه، سرویس‌ها، DTOها، و نگاشت‌ها است. این لایه از Domain استفاده می‌کند و به Infrastructure وابسته نیست.
+2.2.1 کلاس‌ها و توضیحات
+DTOها (src/Application/DTOs/)
+DTO
+
+توضیحات
+
+UserDto
+
+برای انتقال اطلاعات کاربر (مثل 
+Email
+، 
+FirstName
+).
+
+CreateUserDto
+
+برای ایجاد کاربر جدید (مثل 
+Email
+، 
+Password
+).
+
+ProductDto
+
+برای انتقال اطلاعات محصول (شامل 
+AttributeValues
+).
+
+CreateProductDto
+
+برای ایجاد محصول جدید.
+
+OrderDto
+
+برای انتقال اطلاعات سفارش.
+
+CreateOrderDto
+
+برای ایجاد سفارش جدید.
+
+OrderItemDto
+
+برای آیتم‌های سفارش.
+
+CreateOrderItemDto
+
+برای ایجاد آیتم سفارش.
+
+PaymentDto
+
+برای انتقال اطلاعات پرداخت.
+
+CreatePaymentDto
+
+برای ایجاد پرداخت جدید.
+
+NotificationDto
+
+برای انتقال اطلاعات اعلان.
+
+CreateNotificationDto
+
+برای ایجاد اعلان جدید.
+
+SubscriptionDto
+
+برای انتقال اطلاعات اشتراک.
+
+CreateSubscriptionDto
+
+برای ایجاد اشتراک جدید.
+
+LoyaltyPointDto
+
+برای انتقال اطلاعات امتیاز وفاداری.
+
+ChatMessageDto
+
+برای انتقال اطلاعات پیام چت.
+
+SendChatMessageDto
+
+برای ارسال پیام چت جدید.
+
+UserActivityDto
+
+برای انتقال اطلاعات فعالیت کاربر.
+
+InventoryDto
+
+برای انتقال اطلاعات موجودی.
+
+ReviewDto
+
+برای انتقال اطلاعات نظر.
+
+CreateReviewDto
+
+برای ایجاد نظر جدید.
+
+SearchQueryDto
+
+برای پارامترهای جستجوی پیشرفته (مثل 
+Keyword
+، 
+AttributeFilters
+).
+
+SearchResultDto
+
+برای نتایج جستجو (شامل 
+Products
+ و 
+TotalCount
+).
+
+SearchHistoryDto
+
+برای تاریخچه جستجو.
+
+AttributeDto
+
+برای انتقال اطلاعات ویژگی پویا.
+
+ProductAttributeValueDto
+
+برای انتقال مقادیر ویژگی محصول.
+
+رابط‌ها (src/Application/Interfaces/)
+رابط
+
+توضیحات
+
+IUserService
+
+عملیات کاربر (ایجاد، احراز هویت).
+
+IProductService
+
+عملیات محصول (ایجاد، به‌روزرسانی).
+
+IOrderService
+
+عملیات سفارش (ایجاد، پیگیری).
+
+IPaymentService
+
+عملیات پرداخت.
+
+INotificationService
+
+ارسال اعلان (ایمیل، پیامک).
+
+ISubscriptionService
+
+مدیریت اشتراک.
+
+ILoyaltyService
+
+مدیریت امتیازات وفاداری.
+
+IChatService
+
+مدیریت پیام‌های چت.
+
+IInventoryService
+
+مدیریت موجودی.
+
+IReviewService
+
+مدیریت نظرات.
+
+IAnalyticsService
+
+تولید گزارش‌های تحلیلی.
+
+ISearchService
+
+جستجوی پیشرفته و مدیریت تاریخچه جستجو.
+
+ICacheService
+
+عملیات کش (Redis).
+
+IMessageQueueService
+
+مدیریت صف پیام (RabbitMQ).
+
+IEmailService
+
+ارسال ایمیل.
+
+ISmsService
+
+ارسال پیامک.
+
+سرویس‌ها (src/Application/Services/)
+سرویس
+
+توضیحات
+
+UserService
+
+مدیریت کاربران (ایجاد، احراز هویت با JWT).
+
+ProductService
+
+مدیریت محصولات (ایجاد، به‌روزرسانی، شامل ویژگی‌های پویا).
+
+OrderService
+
+مدیریت سفارشات (ایجاد، محاسبه قیمت، کاهش موجودی).
+
+PaymentService
+
+پردازش پرداخت‌ها.
+
+NotificationService
+
+ارسال اعلانات از طریق صف RabbitMQ.
+
+SubscriptionService
+
+مدیریت اشتراک‌ها.
+
+LoyaltyService
+
+مدیریت امتیازات وفاداری.
+
+ChatService
+
+مدیریت پیام‌های چت بلادرنگ.
+
+InventoryService
+
+مدیریت موجودی و هشدارهای کمبود.
+
+ReviewService
+
+مدیریت نظرات کاربران.
+
+AnalyticsService
+
+تولید گزارش‌های تحلیلی (مثل فروش در بازه زمانی).
+
+SearchService
+
+جستجوی پیشرفته با فیلترهای پویا و ذخیره تاریخچه.
+
+نگاشت‌ها (src/Application/Mappings/)
+کلاس
+
+توضیحات
+
+MappingProfile
+
+نگاشت‌های AutoMapper برای تبدیل موجودیت‌ها به DTOها و بالعکس.
+
+2.2.2 قابلیت‌ها
+احراز هویت با JWT: کاربران با ایمیل و رمز عبور توکن دریافت می‌کنند.
+
+جستجوی پیشرفته: فیلترهای ترکیبی (برند، قیمت، فروشنده، ویژگی‌های پویا مثل وزن)، مرتب‌سازی، و صفحه‌بندی.
+
+مدیریت ویژگی‌های پویا: پشتیبانی از ویژگی‌های دلخواه (مثل وزن برای حلیم یا طعم برای کیک).
+
+کش با Redis: برای بهبود عملکرد جستجو و ویژگی‌های پراستفاده.
+
+صف پیام با RabbitMQ: برای اعلانات غیرهمزمان.
+
+اعلانات: ارسال ایمیل (SMTP) و پیامک (کاوه‌نگار).
+
+2.3 لایه Infrastructure
+لایه Infrastructure شامل پیاده‌سازی‌های زیرساختی مثل دیتابیس، کش، و سرویس‌های خارجی است.
+2.3.1 کلاس‌ها و توضیحات
+Persistence (src/Infrastructure/Persistence/)
+کلاس
+
+توضیحات
+
+AppDbContext
+
+زمینه دیتابیس EF Core. شامل تمام DbSetها و پیکربندی‌های مدل.
+
+DatabaseSchema.sql
+
+اسکریپت SQL برای ایجاد جداول و ایندکس‌ها.
+
+Caching (src/Infrastructure/Caching/)
+کلاس
+
+توضیحات
+
+RedisCacheService
+
+پیاده‌سازی ICacheService برای ذخیره و بازیابی داده‌ها در Redis.
+
+Messaging (src/Infrastructure/Messaging/)
+کلاس
+
+توضیحات
+
+RabbitMQService
+
+پیاده‌سازی IMessageQueueService برای ارسال و دریافت پیام‌ها در RabbitMQ.
+
+سرویس‌های خارجی
+کلاس
+
+توضیحات
+
+SmtpEmailService
+
+پیاده‌سازی IEmailService برای ارسال ایمیل با SMTP.
+
+KavenegarSmsService
+
+پیاده‌سازی ISmsService برای ارسال پیامک با API کاوه‌نگار.
+
+2.3.2 قابلیت‌ها
+دیتابیس SQL Server: ذخیره داده‌ها با EF Core.
+
+کش Redis: برای نتایج جستجو و ویژگی‌های پراستفاده.
+
+صف RabbitMQ: برای پردازش غیرهمزمان اعلانات.
+
+ایمیل و پیامک: ارسال اعلانات به کاربران.
+
+ایندکس‌های دیتابیس: برای بهبود عملکرد کوئری‌ها (مثل ایندکس روی Name، Brand، Tags).
+
+2.4 لایه Presentation
+لایه Presentation شامل APIها، SignalR Hub، و میدلورها است.
+2.4.1 کلاس‌ها و توضیحات
+کنترلرها (src/Presentation/Controllers/)
+کنترلر
+
+توضیحات
+
+UserController
+
+مدیریت کاربران (ثبت‌نام، ورود).
+
+ProductController
+
+مدیریت محصولات (ایجاد، به‌روزرسانی).
+
+OrderController
+
+مدیریت سفارشات (ایجاد، پیگیری).
+
+PaymentController
+
+مدیریت پرداخت‌ها.
+
+NotificationController
+
+مدیریت اعلانات.
+
+SubscriptionController
+
+مدیریت اشتراک‌ها.
+
+LoyaltyController
+
+مدیریت امتیازات وفاداری.
+
+InventoryController
+
+مدیریت موجودی.
+
+ReviewController
+
+مدیریت نظرات.
+
+AnalyticsController
+
+تولید گزارش‌های تحلیلی.
+
+SearchController
+
+جستجوی پیشرفته و تاریخچه جستجو.
+
+هاب‌ها (src/Presentation/Hubs/)
+هاب
+
+توضیحات
+
+ChatHub
+
+هاب SignalR برای چت بلادرنگ (ارسال پیام به کاربر یا گروه).
+
+میدلورها (src/Presentation/Middlewares/)
+میدلور
+
+توضیحات
+
+ErrorHandlingMiddleware
+
+مدیریت استثناهای سراسری و بازگشت پاسخ‌های خطا (مثل 400، 500).
+
+RateLimitingMiddleware
+
+محدود کردن نرخ درخواست‌ها (100 درخواست در دقیقه برای هر IP).
+
+سایر فایل‌ها
+فایل
+
+توضیحات
+
+Program.cs
+
+نقطه ورود برنامه. ثبت سرویس‌ها، پیکربندی JWT، CORS، Swagger، و SignalR.
+
+appsettings.json
+
+تنظیمات پروژه (رشته‌های اتصال، JWT، SMTP، کاوه‌نگار، RabbitMQ).
+
+2.4.2 قابلیت‌ها
+APIهای RESTful: برای تمام عملیات (کاربران، محصولات، سفارشات، و غیره).
+
+Swagger: مستندسازی APIها.
+
+SignalR: چت بلادرنگ با پشتیبانی از گروه‌ها.
+
+احراز هویت JWT: برای endpointهای محافظت‌شده.
+
+CORS: برای دسترسی کلاینت‌ها.
+
+مدیریت خطا: با ErrorHandlingMiddleware.
+
+محدودیت نرخ: با RateLimitingMiddleware.
+
+2.5 لایه Tests
+لایه Tests شامل تست‌های واحد برای لایه Application است.
+2.5.1 کلاس‌ها و توضیحات
+کلاس
+
+توضیحات
+
+UserServiceTests
+
+تست‌های واحد برای UserService (ایجاد کاربر، احراز هویت).
+
+OrderServiceTests
+
+تست‌های واحد برای OrderService (ایجاد سفارش، بررسی موجودی).
+
+SearchServiceTests
+
+تست‌های واحد برای SearchService (جستجوی پیشرفته، فیلترهای پویا).
+
+2.5.2 قابلیت‌ها
+تست‌های واحد با xUnit: برای اطمینان از صحت منطق برنامه.
+
+شبیه‌سازی با Moq: برای حذف وابستگی‌ها.
+
+دیتابیس در حافظه: برای تست‌های سریع و مستقل.
+
+3. قابلیت‌ها و امکانات
+3.1 احراز هویت و مجوزها
+JWT: احراز هویت با توکن JWT (ایجاد توکن در /api/User/authenticate).
+
+نقش‌ها: Customer، Vendor، Admin، SuperAdmin.
+
+مجوزها: با [Authorize(Roles = "Admin")] برای endpointهای خاص.
+
+هش رمز عبور: با BCrypt.
+
+3.2 جستجوی پیشرفته
+فیلترهای ترکیبی:
+Keyword (جستجو در نام، توضیحات، تگ‌ها).
+
+Brand، Vendor، Price (Min/Max)، InStock، Date (Start/End)، Tags.
+
+AttributeFilters: فیلترهای پویا (مثل {1: "500"} برای وزن=500 گرم).
+
+مرتب‌سازی: بر اساس Price، Name، CreatedAt (صعودی/نزولی).
+
+صفحه‌بندی: با PageNumber و PageSize.
+
+کش: نتایج در Redis برای 5 دقیقه.
+
+تاریخچه جستجو: ذخیره و بازیابی برای کاربران.
+
+3.3 ویژگی‌های پویا
+Attributes: تعریف ویژگی‌های دلخواه (مثل Weight، BowlCount).
+
+ProductAttributeValues: ذخیره مقادیر برای هر محصول.
+
+فیلترپذیری: با IsFilterable در Attribute.
+
+گسترش‌پذیری: اضافه کردن ویژگی‌های جدید بدون تغییر کد.
+
+3.4 چت بلادرنگ
+SignalR: با ChatHub در /chatHub.
+
+قابلیت‌ها: ارسال پیام به کاربر خاص یا گروه، پیوستن/خروج از گروه.
+
+احراز هویت: فقط برای کاربران احراز هویت‌شده.
+
+3.5 مدیریت سفارشات
+ایجاد سفارش: با محاسبه قیمت و کاهش موجودی.
+
+پیگیری: مشاهده جزئیات سفارش.
+
+اعلان: ارسال اعلان پس از ثبت سفارش.
+
+3.6 پرداخت
+وضعیت‌ها: Pending، Completed، Failed.
+
+پردازش: شبیه‌سازی پرداخت (قابل اتصال به درگاه واقعی).
+
+3.7 اعلانات
+ایمیل: با SMTP (مثل Gmail).
+
+پیامک: با API کاوه‌نگار.
+
+غیرهمزمان: با RabbitMQ.
+
+3.8 مدیریت موجودی
+موجودی: بررسی و کاهش هنگام سفارش.
+
+هشدار: اعلان برای کمبود موجودی.
+
+3.9 نظرات و امتیازات
+نظرات: ثبت نظر و امتیاز برای محصولات.
+
+وفاداری: کسب امتیاز برای خرید یا نظر.
+
+3.10 گزارش‌های تحلیلی
+AnalyticsController: تولید گزارش فروش بر اساس فیلترهای زمانی.
+
+4. ساختار دیتابیس
+4.1 جداول
+جدول
+
+توضیحات
+
+Users
+
+کاربران (مشتری، فروشنده، مدیر).
+
+Products
+
+محصولات (شامل Brand، Tags، AttributeValues).
+
+Vendors
+
+فروشندگان.
+
+Orders
+
+سفارشات.
+
+OrderItems
+
+آیتم‌های سفارش.
+
+Payments
+
+پرداخت‌ها.
+
+Notifications
+
+اعلانات.
+
+Subscriptions
+
+اشتراک‌ها.
+
+LoyaltyPoints
+
+امتیازات وفاداری.
+
+LoyaltyTransactions
+
+تراکنش‌های امتیاز.
+
+ChatMessages
+
+پیام‌های چت.
+
+UserActivities
+
+فعالیت‌های کاربر.
+
+Inventories
+
+موجودی محصولات.
+
+InventoryAlerts
+
+هشدارهای موجودی.
+
+Reviews
+
+نظرات.
+
+SearchHistory
+
+تاریخچه جستجو.
+
+Attributes
+
+ویژگی‌های پویا.
+
+ProductAttributeValues
+
+مقادیر ویژگی‌ها.
+
+4.2 ایندکس‌ها
+Users: ایندکس روی Email (یکتا).
+
+Products: ایندکس روی Name، Brand، Tags، Price.
+
+ProductAttributeValues: ایندکس روی ProductId، AttributeId.
+
+5. راه‌اندازی و اجرا
+5.1 پیش‌نیازها
 .NET 9.0.5 SDK
 
 SQL Server (یا Express)
@@ -453,9 +971,7 @@ RabbitMQ (docker run -d -p 5672:5672 -p 15672:15672 rabbitmq:3-management)
 
 حساب ایمیل SMTP (مثل Gmail با App Password)
 
-Visual Studio 2022 یا VS Code
-
-مراحل نصب
+5.2 راه‌اندازی
 کلون پروژه:
 bash
 
@@ -468,7 +984,7 @@ bash
 dotnet restore
 
 پیکربندی دیتابیس:
-به‌روزرسانی رشته اتصال در appsettings.json.
+به‌روزرسانی appsettings.json با رشته اتصال.
 
 اعمال مهاجرت‌ها:
 bash
@@ -476,95 +992,73 @@ bash
 dotnet ef migrations add InitialCreate
 dotnet ef database update
 
-پیکربندی Redis و RabbitMQ:
-تنظیمات در appsettings.json.
-
-پیکربندی ایمیل و پیامک:
-اطلاعات SMTP و کاوه‌نگار در appsettings.json.
+پیکربندی Redis، RabbitMQ، SMTP، و کاوه‌نگار در appsettings.json.
 
 اجرا:
 bash
 
 dotnet run --project src/Presentation
 
-API در https://localhost:5001.
-
-Swagger در https://localhost:5001/swagger.
-
-دیپلوی و مقیاس‌پذیری
-دیپلوی
+5.3 دیپلوی
 ساخت پروژه:
 bash
 
 dotnet publish -c Release -o ./publish
 
-دیپلوی در سرور:
-استفاده از IIS، Kestrel یا Docker.
+دیپلوی در IIS، Kestrel، یا Docker.
 
-تنظیم متغیرهای محیطی (رشته‌های اتصال، کلیدها).
+تنظیم متغیرهای محیطی برای مقادیر حساس.
 
-مانیتورینگ:
-استفاده از Serilog یا Application Insights.
+6. مستندات API
+6.1 نمونه درخواست‌ها
+جستجوی پیشرفته:
+json
 
-مقیاس‌پذیری
-دیتابیس: استفاده از Replica Sets در SQL Server.
-
-کش: مقیاس‌پذیری Redis با Cluster Mode.
-
-صف پیام: استفاده از چندین نود RabbitMQ.
-
-API: استفاده از Kubernetes برای مقیاس‌پذیری افقی.
-
-تست‌ها
-تست‌های واحد: برای سرویس‌های کلیدی (مثل SearchService، UserService).
-
-پوشش تست: تمرکز بر سناریوهای اصلی (جستجو، ثبت کاربر، سفارش).
-
-ابزارها: xUnit، Moq، EF Core In-Memory.
-
-مثال تست:
-csharp
-
-[Fact]
-public async Task SearchAsync_WithAttributeFilters_ReturnsFilteredProducts()
+POST /api/Search
 {
-    // Arrange, Act, Assert
+  "Keyword": "Halim",
+  "AttributeFilters": {
+    "1": "500",
+    "2": "2"
+  },
+  "PageNumber": 1,
+  "PageSize": 10
 }
 
-گسترش‌پذیری و نگهداری
-گسترش‌پذیری
-اضافه کردن محصولات جدید:
-تعریف ویژگی‌های جدید در Attributes (مثل وزن).
+دریافت ویژگی‌های قابل فیلتر:
+json
 
-اضافه کردن محصول در Products.
+GET /api/Search/attributes
 
-ثبت مقادیر ویژگی‌ها در ProductAttributeValues.
+ایجاد کاربر:
+json
 
-جستجو با AttributeFilters.
+POST /api/User
+{
+  "Email": "test@example.com",
+  "Password": "Password123",
+  "FirstName": "Test",
+  "LastName": "User"
+}
 
-ویژگی‌های جدید:
-اضافه کردن فیلترهای جدید به SearchQueryDto.
+6.2 Swagger
+در محیط توسعه: https://localhost:5001/swagger
 
-گسترش SearchService برای پشتیبانی از فیلترها.
+7. نکات امنیتی
+JWT: کلید در محیط تولید امن باشد.
 
-ادغام با Elasticsearch:
-برای جستجوی سریع‌تر در حجم داده بالا.
+HTTPS: الزامی برای محیط تولید.
 
-نگهداری
-لاگ‌نویسی: استفاده از Serilog برای ردیابی خطاها.
+Rate Limiting: جلوگیری از حملات DDoS.
 
-مستندات: به‌روزرسانی مستندات با تغییرات جدید.
+اسرار: استفاده از متغیرهای محیطی یا Azure Key Vault.
 
-تست‌های خودکار: اجرای تست‌ها در CI/CD.
 
-نتیجه‌گیری
-GoldenClusterFantasy یک پلتفرم قدرتمند و انعطاف‌پذیر برای فروش آنلاین نان فانتزی، شیرینی و محصولات متنوع است. با استفاده از Clean Architecture، فناوری‌های مدرن و جستجوی پیشرفته با ویژگی‌های پویا، این سیستم آماده پاسخگویی به نیازهای فعلی و گسترش در آینده است. مستندات ارائه‌شده تمام جنبه‌های پروژه را پوشش می‌دهد و راهنمایی کاملی برای توسعه‌دهندگان، مدیران فنی و تیم‌های عملیاتی فراهم می‌کند.
-اقدامات پیشنهادی بعدی:
-تست کامل APIها و جستجوی پیشرفته.
+پیشنهادات هوشمند: با تحلیل SearchHistory و ProductAttributeValues.
 
-دیپلوی در محیط تولید با مانیتورینگ.
+8. جمع‌بندی
+این پروژه یک پلتفرم کامل، مقیاس‌پذیر، و آینده‌نگرانه برای فروشگاه آنلاین است که تمام نیازهای کنونی (جستجوی پیشرفته، ویژگی‌های پویا، چت، پرداخت) و آینده (اضافه کردن محصولات جدید مثل حلیم) را پوشش می‌دهد. تمام لایه‌ها، کلاس‌ها، و قابلیت‌ها با جزئیات شرح داده شدند. برای هرگونه اصلاح یا اضافه شدن ویژگی، لطفاً اطلاع دهید!
 
-گسترش با ویژگی‌های جدید مثل پیشنهادات هوشمند
 
 
 آپدیت قابلیت‌های جدید:
