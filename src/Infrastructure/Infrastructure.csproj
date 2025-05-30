@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0.5</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Infrastructure</AssemblyName>
+    <RootNamespace>Infrastructure</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="StackExchange.Redis" Version="2.8.16" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
+    <PackageReference Include="System.Net.Mail" Version="4.7.0" />
+    <PackageReference Include="Kavenegar.Core" Version="1.2.5" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Caching\" />
+    <Folder Include="Messaging\" />
+    <Folder Include="Persistence\" />
+  </ItemGroup>
+
+</Project>
+
+<!-- توضیحات:
+TargetFramework: .NET 9.0.
+
+وابستگی‌ها:
+Microsoft.EntityFrameworkCore*: برای دسترسی به دیتابیس با EF Core و SQL Server.
+
+StackExchange.Redis: برای کش با Redis.
+
+RabbitMQ.Client: برای صف پیام با RabbitMQ.
+
+System.Net.Mail: برای ارسال ایمیل با SMTP.
+
+Kavenegar.Core: برای ارسال پیامک با API کاوه‌نگار.
+
+ProjectReference: به پروژه Domain وابسته است.
+
+پوشه‌ها: شامل Caching (برای Redis)، Messaging (برای RabbitMQ)، و Persistence (برای EF Core).
+
+ -->

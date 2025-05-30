@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0.5</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Presentation</AssemblyName>
+    <RootNamespace>Presentation</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>GoldenClusterFantasy</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Hubs\" />
+    <Folder Include="Middlewares\" />
+  </ItemGroup>
+
+</Project>
+
+<!-- توضیحات:
+TargetFramework: .NET 9.0 (با Sdk نوع Web برای API).
+
+UserSecretsId: برای مدیریت اسرار (مثل کلیدهای حساس) در توسعه.
+
+وابستگی‌ها:
+Microsoft.AspNetCore.Authentication.JwtBearer: برای احراز هویت JWT.
+
+Microsoft.AspNetCore.SignalR: برای چت بلادرنگ.
+
+Swashbuckle.AspNetCore: برای مستندسازی API با Swagger.
+
+ProjectReference: به پروژه‌های Application و Infrastructure وابسته است.
+
+پوشه‌ها: شامل Controllers، Hubs (برای SignalR)، و Middlewares.
+
+ -->

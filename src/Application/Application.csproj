@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0.5</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>Application</AssemblyName>
+    <RootNamespace>Application</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.1.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\" />
+    <Folder Include="Interfaces\" />
+    <Folder Include="Mappings\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
+
+<!-- توضیحات:
+TargetFramework: پروژه روی .NET 9.0 هدف‌گذاری شده.
+
+ImplicitUsings و Nullable: برای کد تمیزتر و بررسی null فعال شدن.
+
+GenerateDocumentationFile: مستندات XML برای کدها تولید می‌شه (مفید برای Swagger و ابزارهای تحلیل کد).
+
+وابستگی‌ها:
+AutoMapper: برای نگاشت DTOها و موجودیت‌ها.
+
+Microsoft.Extensions.*: برای DI و پیکربندی.
+
+Microsoft.IdentityModel.Tokens و System.IdentityModel.Tokens.Jwt: برای احراز هویت JWT.
+
+BCrypt.Net-Next: برای هش کردن رمز عبور.
+
+ProjectReference: به پروژه‌های Domain و Infrastructure وابسته است.
+
+پوشه‌ها: ساختار پوشه‌ها (DTOs، Interfaces، Mappings، Services) تعریف شده.
+
+ -->
